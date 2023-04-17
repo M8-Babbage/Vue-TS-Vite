@@ -5,6 +5,12 @@
 </template>
 
 <script setup lang="ts">
+// Uso de los estados en pinia
+import { useCounterStore } from "@/stores/counter";
+
+// Referencia al estado de Pinia
+const counter = useCounterStore();
+
 // Definimos las propiedades que va a recibir el componente
 const props = defineProps({
   label: {
@@ -23,13 +29,14 @@ const emits = defineEmits({
 });
 
 // Función para cuando se haga click en el botón
-function handleClick(event: MouseEvent) {
+const handleClick = (event: MouseEvent) => {
   // Emitimos el evento onClick con la información del evento, y el color
+  counter.increment();
   emits("onClick", event, props.color);
 }
 
 // Retornamos los estilos de manera dinámica usando las props
-function createButtonStyles() {
+const createButtonStyles = () => {
   return {
     color: props.color ? props.color : "black",
   };
