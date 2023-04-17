@@ -7,6 +7,7 @@ import { fileURLToPath, URL } from "node:url";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  base: "/Vue-TS-Vite/",
   resolve: {
     // Aquí se pueden añadir los alias a las carpetas
     alias: {
